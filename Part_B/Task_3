@@ -1,0 +1,48 @@
+# Firstly we will create an empty list to act as our queue #
+queue = []
+
+# Function to add (enqueue) an element to the queue #
+def enqueue(item):
+    # append() adds element at the end (rear of queue) #
+    queue.append(item)
+
+# Function to remove (dequeue) an element from the queue #
+def dequeue():
+    # Check if queue is empty before removing #
+    if is_empty():
+        return "The Queue is empty"
+    # pop(0) removes the first element (front of queue) #
+    return queue.pop(0)
+
+# Function to get the front element without removing it #
+def front():
+    if is_empty():
+        return "The Queue is empty"
+    return queue[0]
+
+# Function to check if the queue is empty
+def is_empty():
+    return len(queue) == 0
+
+# Function to display all elements in the queue
+def display():
+    return queue
+
+
+# Lets Test the Queue #
+
+enqueue(305)
+enqueue(672)
+enqueue(584)
+enqueue(581)
+enqueue(222)
+
+print("Queue after enqueue:")
+print(display())
+
+print("The Front element is:", front())
+
+print("The Dequeued element is:", dequeue())
+
+print("Queue after dequeue:")
+print(display())

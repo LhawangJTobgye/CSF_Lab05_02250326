@@ -1,0 +1,39 @@
+# Lets First Initialize the queue #
+queue = []
+
+# Then we create a Function to add customers to the queue #
+def add_customer(name):
+    queue.append(name)
+
+# Function to serve a customer using (FIFO) principle #
+def serve_customer():
+    if is_empty():
+        return "There are no customers to serve"
+    # Remove and return the first customer #
+    return queue.pop(0)
+
+# Function to check if queue is empty #
+def is_empty():
+    return len(queue) == 0
+
+# Function to display the current queue #
+def display():
+    return queue
+
+# Now lets try adding some actual customers #
+add_customer("Lhawang")
+add_customer("Bidhas")
+add_customer("Tshering")
+add_customer("Sagar")
+add_customer("Pema")
+
+# Display customers waiting #
+print("The Customers that are waiting:")
+print(display())
+
+# Serve first customer #
+print("Serving customer:", serve_customer())
+
+# Display remaining customers #
+print("Remaining queue:")
+print(display())
