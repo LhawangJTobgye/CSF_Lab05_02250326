@@ -1,0 +1,103 @@
+# Lets first Create a Node class to represent each element in the linked list #
+class Node:
+    def __init__(self, data):
+        self.data = data      # Store data #
+        self.next = None      # Pointer to next node #
+
+
+# Then we also create a LinkedList class #
+class LinkedList:
+    def __init__(self):
+        self.head = None      # Initially, list is empty #
+
+    # First operation: Insert at beginning #
+    def insert_at_beginning(self, data):
+        new_node = Node(data)     # Create new node
+        new_node.next = self.head # Point new node to current head
+        self.head = new_node      # Update head
+
+    # Second operation: Insert at end #
+    def insert_at_end(self, data):
+        new_node = Node(data)
+        
+        # If list is empty
+        if self.head is None:
+            self.head = new_node
+            return
+        
+        temp = self.head
+        # Traverse to last node
+        while temp.next:
+            temp = temp.next
+        
+        temp.next = new_node  # This will Link last node to new node #
+
+    # Third operation: Delete a node by value #
+    def delete_node(self, data):
+        temp = self.head
+
+        # If head itself holds the data
+        if temp and temp.data == data:
+            self.head = temp.next
+            return
+
+        prev = None
+        # Search for the node to delete #
+        while temp and temp.data != data:
+            prev = temp
+            temp = temp.next
+
+        # If data not found
+        if temp is None:
+            return
+
+        # Unlink the node
+        prev.next = temp.next
+
+    # Fourth operation: Search for a value #
+    def search(self, data):
+        temp = self.head
+        while temp:
+            if temp.data == data:
+                return True
+            temp = temp.next
+        return False
+
+    # Then, we Display the linked list #
+    def display(self):
+        temp = self.head
+        while temp:
+            print(temp.data, end=" -> ")
+            temp = temp.next
+        print("None")
+
+
+# Now let's actually try testing the Linked List #
+ll = LinkedList()
+
+# Insert elements at end
+ll.insert_at_end(3)
+ll.insert_at_end(8)
+ll.insert_at_end(94)
+ll.insert_at_end(102)
+ll.insert_at_end(135)
+
+print("Linked List:")
+ll.display()
+
+# Inserting data at the beginning #
+ll.insert_at_beginning(2)
+print("After inserting 2 at the beginning:")
+ll.display()
+
+# Deleting the node #
+ll.delete_node(8)
+print("After deleting 8:")
+ll.display()
+
+# Searching for element #
+print("Search 94:")
+if ll.search(94):
+    print("Element is found")
+else:
+    print("Element is not found")
