@@ -1,0 +1,62 @@
+class Node:
+    def __init__(self, data):
+        self.data, self.next = data, None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    # Insert at end (usually used for testing) #
+    def insert_at_end(self, data):
+        if not self.head:
+            self.head = Node(data); return
+        t = self.head
+        while t.next: t = t.next
+        t.next = Node(data)
+
+    # Count the number of nodes #
+    def count_nodes(self):
+        count, t = 0, self.head
+        while t:
+            count += 1
+            t = t.next
+        return count
+
+    # Find middle element #
+    def find_middle(self):
+        slow = fast = self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow.data if slow else None
+
+    # Reverse the linked list #
+    def reverse_list(self):
+        prev, curr = None, self.head
+        while curr:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
+        self.head = prev
+
+    # Display the list #
+    def display(self):
+        t = self.head
+        while t:
+            print(t.data, end=" -> ")
+            t = t.next
+        print("None")
+
+
+# Now, lets actually do some Testing #
+ll = LinkedList()
+for i in [4, 22, 37, 49, 55, 68]:
+    ll.insert_at_end(i)
+
+print("The Number of nodes is:", ll.count_nodes())
+print("The Middle element is:", ll.find_middle())
+
+ll.reverse_list()
+print("Reversed list:")
+ll.display()
