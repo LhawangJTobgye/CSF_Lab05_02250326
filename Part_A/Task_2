@@ -1,0 +1,45 @@
+# Firstly lets create a Function to check if parentheses are balanced #
+def is_balanced(expression):
+    stack = []
+
+    for char in expression:
+        # Push opening brackets #
+        if char in "({[":
+            stack.append(char)
+
+        # Check closing brackets #
+        elif char in ")}]":
+            if len(stack) == 0:
+                return False
+            
+            top = stack.pop()
+
+            # Match corresponding brackets #
+            if (char == ')' and top != '(') or \
+               (char == '}' and top != '{') or \
+               (char == ']' and top != '['):
+                return False
+
+    # If stack is empty, it is balanced #
+    return len(stack) == 0
+
+# Let's Test some Examples #
+
+expr1 = "(x+y)*(x+y)"
+expr2 = "(x+y)*(x+y"
+
+print("Input:", expr1)
+if is_balanced(expr1):
+    print("The Output is balanced")
+else:
+    print("The Output is not balanced")
+
+print()
+
+print("Input:", expr2)
+if is_balanced(expr2):
+    print("The Output is balanced")
+else:
+    print("The Output is not balanced")
+
+    

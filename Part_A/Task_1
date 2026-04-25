@@ -1,0 +1,54 @@
+# First we create an empty list to act as our stack #
+stack = []
+
+# Function to add (push) an element onto the stack #
+def push(item):
+    # append() will add the element to the end of the list (top of stack) #
+    stack.append(item)
+
+# Now, we create the function to remove (pop) the top element from the stack #
+def pop():
+    # First check if the stack is empty to avoid errors #
+    if is_empty():
+        return "The Stack is empty"
+    # pop() removes and returns the last element of the list
+    return stack.pop()
+
+def peek():
+    # Check if stack is empty
+    if is_empty():
+        return "The Stack is empty"
+    # stack[-1] gives the last element (top of stack)
+    return stack[-1]
+
+# Function to check if the stack is empty
+def is_empty():
+    # If length of stack is 0, it means it is empty
+    return len(stack) == 0
+
+# Function to display all elements of the stack
+def display():
+    # Returns the full stack list
+    return stack
+
+# Now Lets test the stack operations #
+
+# Push elements into the stack
+push(7)    # Stack becomes [7]
+push(15)   # Stack becomes [7, 15]
+push(28)   # Stack becomes [7, 15, 28]
+push(35)   # Stack becomes [7, 15, 28, 35]
+
+# Display stack after pushing elements
+print("Stack after pushing elements:")
+print(display())
+
+# This will show the top element of the stack #
+print("Top element:", peek())
+
+# Pop will then remove the top element #
+print("Popped element:", pop())
+
+# Display stack after popping one element #
+print("Stack after popping:")
+print(display())
